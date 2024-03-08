@@ -11,7 +11,7 @@ type storieType = {
   url: string;
 };
 
-function JobStorie({ storie }: { storie: string }) {
+function JobStorie({ storie }: { storie: number }) {
   const [storieData, setStorieData] = useState<storieType | null>(null);
   useEffect(() => {
     fetch(`https://hacker-news.firebaseio.com/v0/item/${storie}.json`)
@@ -23,13 +23,17 @@ function JobStorie({ storie }: { storie: string }) {
     <div className="jobStorie">
       {storieData ? (
         <>
-          <a
-            target="__blank"
-            href={storieData?.url}
-            className="jobStorieHeading"
-          >
-            {storieData?.title}
-          </a>
+          {storieData.url ? (
+            <a
+              target="__blank"
+              href={storieData?.url}
+              className="jobStorieHeadingLink"
+            >
+              {storieData?.title}
+            </a>
+          ) : (
+            <p className="jobStorieHeading">{storieData?.title}</p>
+          )}
           <div className="jobStorieDiscription">
             <p className="recruiter">By {storieData?.by} &middot; </p>
             <p>{new Date(storieData?.time * 1000).toLocaleString()}</p>
@@ -42,19 +46,21 @@ function JobStorie({ storie }: { storie: string }) {
   );
 }
 
-export default function App() {
-  const [allJobStories, setAllJobStories] = useState<string[] | []>([]);
-  const [currentJobStries, setCurrentJobStries] = useState<string[] | []>([]);
+export default function App({ jobStories }: { jobStories: number[] }) {
+  const [allJobStories] = useState<number[] | []>(jobStories);
+  const [currentJobStries, setCurrentJobStries] = useState<number[] | []>(
+    jobStories.slice(0, 6)
+  );
 
-  useEffect(() => {
-    fetch("https://hacker-news.firebaseio.com/v0/allJobStories.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setAllJobStories(data);
-        setCurrentJobStries(data.slice(0, 6));
-      })
-      .catch((err) => console.error(err));
-  }, []);
+  // useEffect(() => {
+  //   fetch("https://hacker-news.firebaseio.com/v0/allJobStories.json")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setAllJobStories(data);
+  //       setCurrentJobStries(data.slice(0, 6));
+  //     })
+  //     .catch((err) => console.error(err));
+  // }, []);
 
   const handleLoadMore = () => {
     setCurrentJobStries([
@@ -82,7 +88,7 @@ export default function App() {
           onClick={() => handleLoadMore()}
           className="loadMoreButton"
         >
-          {currentJobStries <= allJobStories
+          {currentJobStries < allJobStories
             ? "Load more jobs"
             : "No More Jobs Availible"}
         </button>

@@ -12,7 +12,7 @@ body {
   align-items: center;
   min-height: 100vh;
   padding: 5px 10px;
-  background-color: aliceblue;
+  background-color: beige;
 }
 
 .h2Heading {
@@ -22,7 +22,7 @@ body {
 }
 
 .jobsContainer {
-  max-width: 500px;
+  max-width: 600px;
 }
 .jobStorie {
   display: grid;
@@ -35,14 +35,15 @@ body {
   background-color: white;
 }
 
-.jobStorieHeading {
+.jobStorieHeading,
+.jobStorieHeadingLink {
   text-decoration: none;
   font-weight: bold;
   color: black;
   font-size: 16px;
 }
 
-.jobStorieHeading:hover {
+.jobStorieHeadingLink:hover {
   text-decoration: underline;
 }
 
