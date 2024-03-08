@@ -1,0 +1,70 @@
+* {
+  padding: 0px;
+  margin: 0px;
+}
+body {
+  font-family: sans-serif;
+}
+
+.mainContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 100vh;
+  padding: 5px 10px;
+  background-color: aliceblue;
+}
+
+.h2Heading {
+  width: 100%;
+  margin: 20px 0px;
+  color: orangered;
+}
+
+.jobsContainer {
+  max-width: 500px;
+}
+.jobStorie {
+  display: grid;
+  row-gap: 5px;
+  border-radius: 5px;
+  margin: 10px 0px;
+  padding: 12px;
+  min-height: 50px;
+  border: 1px rgb(198, 198, 198) solid;
+  background-color: white;
+}
+
+.jobStorieHeading {
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+  font-size: 16px;
+}
+
+.jobStorieHeading:hover {
+  text-decoration: underline;
+}
+
+.jobStorieDiscription {
+  display: flex;
+  color: rgb(51, 51, 51);
+  margin: 5px 0px;
+  font-size: 14px;
+  gap: 5px;
+}
+
+.loadMoreButton {
+  cursor: pointer;
+  color: white;
+  font-size: 14px;
+  border-radius: 5px;
+  border: none;
+  background-color: orangered;
+  padding: 8px 10px;
+  margin: 10px 0px;
+}
+
+.loadMoreButton:disabled {
+  cursor: not-allowed;
+}
