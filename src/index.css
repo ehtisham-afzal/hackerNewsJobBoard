@@ -68,4 +68,5 @@ body {
 
 .loadMoreButton:disabled {
   cursor: not-allowed;
+  background-color: orange;
 }
