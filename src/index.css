@@ -30,6 +30,7 @@ body {
   border-radius: 5px;
   margin: 10px 0px;
   padding: 12px;
+  min-width: 300px;
   min-height: 50px;
   border: 1px rgb(198, 198, 198) solid;
   background-color: white;
