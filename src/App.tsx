@@ -18,6 +18,7 @@ function JobStorie({ storie }: { storie: number }) {
       .then((res) => res.json())
       .then((data) => setStorieData(data))
       .catch((err) => console.error(err));
+      
   }, []);
   return (
     <div className="jobStorie">
